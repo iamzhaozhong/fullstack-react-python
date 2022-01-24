@@ -10,8 +10,10 @@ scale and sustain is important for this project.
 
 ## Wireframes
 
-![image1](/assets/Web 1920 - 1.png) ![image2](/assets/Web 1920 - 2.png )
-![image3](/assets/Web 1920 - 3.png ) ![image4](/assets/Web 1920 - 4.png )
+![image1](/assets/Web%201920%20–%201.png)
+![image2](/assets/Web%201920%20–%202.png)
+![image3](/assets/Web%201920%20–%203.png)
+![image4](/assets/Web%201920%20–%204.png)
 
 ## Technology
 
