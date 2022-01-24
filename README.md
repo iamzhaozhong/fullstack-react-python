@@ -65,4 +65,4 @@ above will be post-MVP)
 
 ## Entity Relationship Diagram for the DB
 
-<kbd>![flow](/assets/erd.png)</kbd>
+<kbd>![flow](/assets/erd_updated.png)</kbd>
