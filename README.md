@@ -1,12 +1,10 @@
-# ZZ Blog App
+# Introduction
 
-This is a blog app.
+This is a blog app made with a simple  goal in mind - to build something that I personally want to use as an 
+end-user. Thus, it is indeed "very personal" because of it. The app tries to keep the stability and sustainability 
+front and central. To create a design that is both clean and functional, and the code that is readable and 
+customizable by anyone.
 
-# However,
-
-It's different from other ones out there for a not-so-special reason - I want to
-make this app of my own, something that I can use as an end-user. Thus, I want
-to make this project/app a scalable and sustainable one.
 
 ## Technology
 
