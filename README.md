@@ -25,6 +25,7 @@ scale and sustain is important for this project.
 <kbd>![image2](/assets/Web%201920%20–%202.png)</kbd>
 <kbd>![image3](/assets/Web%201920%20–%203.png)</kbd>
 <kbd>![image4](/assets/Web%201920%20–%204.png)</kbd>
+<kbd>![image5](/assets/Web%201920%20–%205.png)</kbd>
 
 ## Flowchart
 
