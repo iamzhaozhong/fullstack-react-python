@@ -6,6 +6,7 @@ import { Route, BrowserRouter as Router, Routs } from 'react-router-dom';
 import App from './App';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import login from 'components/Login';
 
 const routing = (
 	<Router>
@@ -13,6 +14,9 @@ const routing = (
 			<Header />
 			<Routs>
 				<Route exact path='/' component={App} />
+				<Route path='/register' component={Register} />
+				<Route path='/login' component={Login} />
+				<Route path='/logout' component={Logout} />
 			</Routs>
 			<Footer />
 		</React.StrictMode>
