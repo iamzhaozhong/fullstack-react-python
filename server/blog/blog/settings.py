@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-sseu_gs9vnies-pj99f-)vp$1#z@u*%&335d+-926dq47a@ao8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -41,16 +41,17 @@ INSTALLED_APPS = [
     'blogapi',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'blog.urls'
 
