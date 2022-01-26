@@ -4,9 +4,21 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-awsebcli = "*"
+django = "*"
+djangorestframework = "*"
+psycopg2 = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+whitenoise = "*"
+wheel = "*"
+setuptools = "*"
+sqlparse = "*"
+dj-database-url = "*"
+asgiref = "*"
+django-heroku = "*"
+pip = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.9"
