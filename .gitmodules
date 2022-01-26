@@ -1,3 +1,6 @@
 [submodule "cryptic-headland-38418"]
 	path = cryptic-headland-38418
 	url = https://git.heroku.com/cryptic-headland-38418.git
+[submodule "zzblog-backend"]
+	path = zzblog-backend
+	url = https://github.com/iamzhaozhong/zzblog-backend.git
