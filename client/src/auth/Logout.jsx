@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axiosInstance from '../services/AxiosRequest';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import AxiosRequest from '../services/AxiosRequest';
 
-export default function SignUp() {
+export default function Logout() {
 	const history = useHistory();
 
 	useEffect(() => {
-		const response = axiosInstance.post('user/logout/blacklist/', {
+		const response = AxiosRequest.post('user/logout/blacklist/', {
 			refresh_token: localStorage.getItem('refresh_token'),
 		});
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('refresh_token');
-		axiosInstance.defaults.headers['Authorization'] = null;
+		AxiosRequest.defaults.headers['Authorization'] = null;
 		history.push('/login');
 	});
 	return <div>Logout</div>;

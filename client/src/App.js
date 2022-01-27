@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Posts from './components/Posts';
-import PostLoadingComponent from './utility/PostLoading';
+import GetPosts from'./ultility/GetPosts';
+import PostLoadingComponent from './components/posts/postLoading';
+import AxiosRequest from './services/AxiosRequest';
 
 function App() {
-	const PostLoading = PostLoadingComponent(Posts);
+	const PostLoading = PostLoadingComponent(GetPosts);
 	const [appState, setAppState] = useState({
-		loading: false,
+		loading: true,
 		posts: null,
 	});
 
 	useEffect(() => {
-		setAppState({ loading: true });
-		const apiUrl = `http://127.0.0.1:8000/api/`;
-		fetch(apiUrl)
-			.then((data) => data.json())
-			.then((posts) => {
-				setAppState({ loading: false, posts: posts });
-			});
+		AxiosRequest().get().then((res) => {
+			const allPosts = res.data;
+			console.log(res.data);
+			setAppState({ loading: false, posts: allPosts });
+			console.log(res.data);
+		});
 	}, [setAppState]);
-
 	return (
-		<div className='App'>
+		<div className="App">
 			<h1>Latest Posts</h1>
 			<PostLoading isLoading={appState.loading} posts={appState.posts} />
 		</div>

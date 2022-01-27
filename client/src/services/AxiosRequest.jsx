@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseURL = 'http://127.0.0.1:8000/api/';
+const baseURL = process.env.REACT_APP_API_ENDPOINT;
 
-const axiosInstance = axios.create({
+const AxiosRequest = axios.create({
 	baseURL: baseURL,
 	timeout: 5000,
 	headers: {
@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
 	},
 });
 
-axiosInstance.interceptors.response.use(
+AxiosRequest.interceptors.response.use(
 	(response) => {
 		return response;
 	},
@@ -53,7 +53,7 @@ axiosInstance.interceptors.response.use(
 				console.log(tokenParts.exp);
 
 				if (tokenParts.exp > now) {
-					return axiosInstance
+					return AxiosRequest
 						.post('/token/refresh/', { refresh: refreshToken })
 						.then((response) => {
 							localStorage.setItem(
@@ -70,7 +70,7 @@ axiosInstance.interceptors.response.use(
 							originalRequest.headers['Authorization'] =
 								'JWT ' + response.data.access;
 
-							return axiosInstance(originalRequest);
+							return AxiosRequest(originalRequest);
 						})
 						.catch((err) => {
 							console.log(err);
@@ -94,4 +94,4 @@ axiosInstance.interceptors.response.use(
 	},
 );
 
-export default axiosInstance;
+export default AxiosRequest;

@@ -2,22 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import { Route, BrowserRouter as Router, Routs } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import {Routes} from 'react-router'
 import App from './App';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import login from 'components/Login';
+
+// import Register from './components/auth/register';
+// import Login from './components/auth/login';
+// import Logout from './components/auth/logout';
+// import Single from './components/posts/single';
+// import Search from './components/posts/search';
+// import Admin from './Admin';
+// import Create from './components/admin/create';
+// import Edit from './components/admin/edit';
+// import Delete from './components/admin/delete';
 
 const routing = (
 	<Router>
 		<React.StrictMode>
 			<Header />
-			<Routs>
-				<Route exact path='/' component={App} />
-				<Route path='/register' component={Register} />
-				<Route path='/login' component={Login} />
-				<Route path='/logout' component={Logout} />
-			</Routs>
+			<Routes>
+				<Route exact path="/" component={App} />
+				<Route exact path="/admin" component={Admin} />
+				<Route exact path="/admin/create" component={Create} />
+				<Route exact path="/admin/edit/:id" component={Edit} />
+				<Route exact path="/admin/delete/:id" component={Delete} />
+				<Route path="/register" component={Register} />
+				<Route path="/login" component={Login} />
+				<Route path="/logout" component={Logout} />
+				<Route path="/post/:slug" component={Single} />
+				<Route path="/search" component={Search} />
+			</Routes>
 			<Footer />
 		</React.StrictMode>
 	</Router>
