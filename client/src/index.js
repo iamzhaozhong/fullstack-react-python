@@ -1,22 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
 import './index.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import {Routes} from 'react-router'
 import App from './App';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
-// import Register from './components/auth/register';
-// import Login from './components/auth/login';
-// import Logout from './components/auth/logout';
-// import Single from './components/posts/single';
-// import Search from './components/posts/search';
-// import Admin from './Admin';
-// import Create from './components/admin/create';
-// import Edit from './components/admin/edit';
-// import Delete from './components/admin/delete';
+import Signup from './auth/SignUp';
+import Login from './auth/Login';
+import Logout from './auth/Logout';
+import Single from './utility/Single';
+import SearchPost from './utility/SearchPost';
+import Admin from './components/Admin';
+import Create from './crud/Create';
+import Edit from './crud/Edit';
+import Delete from './crud/Delete';
 
 const routing = (
 	<Router>
@@ -28,11 +26,11 @@ const routing = (
 				<Route exact path="/admin/create" component={Create} />
 				<Route exact path="/admin/edit/:id" component={Edit} />
 				<Route exact path="/admin/delete/:id" component={Delete} />
-				<Route path="/register" component={Register} />
+				<Route path="/register" component={Signup} />
 				<Route path="/login" component={Login} />
 				<Route path="/logout" component={Logout} />
 				<Route path="/post/:slug" component={Single} />
-				<Route path="/search" component={Search} />
+				<Route path="/search" component={SearchPost} />
 			</Routes>
 			<Footer />
 		</React.StrictMode>
@@ -41,7 +39,4 @@ const routing = (
 
 ReactDOM.render(routing, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+

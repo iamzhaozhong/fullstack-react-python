@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import GetPosts from'./ultility/GetPosts';
-import PostLoadingComponent from './components/posts/postLoading';
+import GetPosts from './utility/GetPosts';
+import PostLoadingComponent from './utility/PostLoading';
 import AxiosRequest from './services/AxiosRequest';
 
 function App() {

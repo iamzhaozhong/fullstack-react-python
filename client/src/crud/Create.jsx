@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axiosInstance from '../../axios';
-import { useHistory } from 'react-router-dom';
+import AxiosRequest from '../services/AxiosRequest';
+import { useNavigate } from 'react-router-dom';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -51,7 +51,7 @@ export default function Create() {
             .replace(/-+$/, ''); // Trim - from end of text
     }
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const initialFormData = Object.freeze({
         title: '',
         slug: '',
@@ -80,7 +80,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axiosInstance
+        AxiosRequest()
             .post(`admin/create/`, {
                 title: formData.title,
                 slug: formData.slug,
@@ -89,7 +89,7 @@ export default function Create() {
                 content: formData.content,
             })
             .then((res) => {
-                history.push('/admin/');
+                navigate.push('/admin/');
             });
     };
 

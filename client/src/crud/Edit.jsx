@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from '../../axios';
-import { useHistory, useParams } from 'react-router-dom';
+import AxiosRequest from '../services/AxiosRequest';
+import { useNavigate, useParams } from 'react-router-dom';
 //MaterialUI
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Create() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const { id } = useParams();
     const initialFormData = Object.freeze({
         id: '',
@@ -40,7 +40,7 @@ export default function Create() {
     const [formData, updateFormData] = useState(initialFormData);
 
     useEffect(() => {
-        axiosInstance.get('admin/edit/postdetail/' + id).then((res) => {
+        AxiosRequest.get('admin/edit/postdetail/' + id).then((res) => {
             updateFormData({
                 ...formData,
                 ['title']: res.data.title,
@@ -64,14 +64,14 @@ export default function Create() {
         e.preventDefault();
         console.log(formData);
 
-        axiosInstance.put(`admin/edit/` + id + '/', {
+        AxiosRequest.put(`admin/edit/` + id + '/', {
             title: formData.title,
             slug: formData.slug,
             author: 1,
             excerpt: formData.excerpt,
             content: formData.content,
         });
-        history.push({
+        navigate.push({
             pathname: '/admin/',
         });
         window.location.reload();

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import axiosInstance from '../../axios/login';
-import { useHistory } from 'react-router-dom';
-import FbLogin from 'react-facebook-login';
-import FacebookLogin from '../../axios/facebookLogin';
+import AxiosRequest from '../services/AxiosRequest';
+import { useNavigate } from 'react-router-dom';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -37,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const initialFormData = Object.freeze({
         email: '',
         password: '',
@@ -56,7 +54,7 @@ export default function SignIn() {
         e.preventDefault();
         console.log(formData);
 
-        axiosInstance
+        AxiosRequest()
             .post(`auth/token/`, {
                 grant_type: 'password',
                 username: formData.email,
@@ -68,14 +66,14 @@ export default function SignIn() {
             .then((res) => {
                 localStorage.setItem('access_token', res.data.access_token);
                 localStorage.setItem('refresh_token', res.data.refresh_token);
-                history.push('/');
+                navigate.push('/');
                 window.location.reload();
             });
     };
 
-    const responseFacebook = async (response) => {
-        FacebookLogin(response.accessToken);
-    };
+    // const responseFacebook = async (response) => {
+    //     FacebookLogin(response.accessToken);
+    // };
 
     const classes = useStyles();
 
@@ -126,11 +124,11 @@ export default function SignIn() {
                     >
                         Sign In
                     </Button>
-                    <FbLogin
-                        appId="424762231818988"
-                        fields="name,email,picture"
-                        callback={responseFacebook}
-                    />
+                    {/*<FbLogin*/}
+                    {/*    appId="424762231818988"*/}
+                    {/*    fields="name,email,picture"*/}
+                    {/*    callback={responseFacebook}*/}
+                    {/*/>*/}
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">

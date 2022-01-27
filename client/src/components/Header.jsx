@@ -4,11 +4,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import SearchBar from 'material-ui-search-bar';
-import { useHistory } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
     const classes = useStyles();
-    let history = useHistory();
+    let navigate = useNavigate();
     const [data, setData] = useState({ search: '' });
 
     const goSearch = (e) => {
-        history.push({
+        navigate.push({
             pathname: '/search/',
             search: '?search=' + data.search,
         });
@@ -59,13 +59,12 @@ function Header() {
                             Blog
                         </Link>
                     </Typography>
-
-                    <SearchBar
-                        value={data.search}
-                        onChange={(newValue) => setData({ search: newValue })}
-                        onRequestSearch={() => goSearch(data.search)}
+                    <Autocomplete
+                        id="search"
+                        renderInput={() => <TextField value={data.search}
+                                                            onChange={(newValue) => setData({ search: newValue })}
+                                                            onRequestSearch={() => goSearch(data.search)} />}
                     />
-
                     <nav>
                         <Link
                             color="textPrimary"

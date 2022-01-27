@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import Posts from './components/admin/posts';
-import PostLoadingComponent from './components/posts/postLoading';
+import React,  { useEffect, useState } from 'react';
+import GetPosts from '../utility/GetPosts';
+import PostLoadingComponent from '../utility/PostLoading';
 import AxiosRequest from '../services/AxiosRequest';
 
 function Admin() {
-    const PostLoading = PostLoadingComponent(Posts);
+    const PostLoading = PostLoadingComponent(GetPosts);
     const [appState, setAppState] = useState({
         loading: true,
         posts: null,
