@@ -25,7 +25,7 @@ export default function AllPosts({ posts }) {
 		<Page>
 			<Grid>
 				{posts.map((post) => (
-					<NavLink to={`post/${post.slug}`}>
+					<NavLink exact to={`post/${post.slug}`}>
 						<Card
 							id={post.id}
 							key={post.slug}

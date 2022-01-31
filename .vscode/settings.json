@@ -1,3 +1,4 @@
 {
-    "editor.renderLineHighlight": "gutter"
+    "editor.renderLineHighlight": "gutter",
+    "git.ignoreLimitWarning": true
 }
