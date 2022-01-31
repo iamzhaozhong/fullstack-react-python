@@ -48,8 +48,8 @@ const Image = styled.img`
 `;
 
 export default function PostDetail() {
+	
 	const { slug } = useParams();
-
 	const [data, setData] = useState({
 		posts: [],
 	});
@@ -60,7 +60,7 @@ export default function PostDetail() {
 				posts: res.data,
 			});
 		});
-	}, [setData]);
+	}, );
 
 	return (
 		<>
