@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import GetPosts from './utility/GetPosts';
-import PostLoadingComponent from './utility/PostLoading';
-import AxiosRequest from './services/AxiosRequest';
+import { useState, useEffect } from 'react';
+import PostLoadingComponent from './Pages/PostPage/PostLoading';
+import AllPosts from './Pages/AllPosts';
+import axiosInstance from './Services/AxiosConfig';
+import Nav from './Components/Nav';
 
-function App() {
-	const PostLoading = PostLoadingComponent(GetPosts);
+export default function App() {
+	const PostLoading = PostLoadingComponent(AllPosts);
 	const [appState, setAppState] = useState({
 		loading: true,
 		posts: null,
 	});
 
 	useEffect(() => {
-		AxiosRequest().get().then((res) => {
-			const allPosts = res.data;
-			console.log(res.data);
-			setAppState({ loading: false, posts: allPosts });
-			console.log(res.data);
-		});
+		axiosInstance
+			.get(
+				'https://zz-cors.herokuapp.com/https://cryptic-headland-38418.herokuapp.com/api'
+			)
+			.then((res) => {
+				const allPosts = res.data;
+				setAppState({ loading: false, posts: allPosts });
+			});
 	}, [setAppState]);
 	return (
-		<div className="App">
-			<h1>Latest Posts</h1>
+		<div className='App'>
+			<Nav />
 			<PostLoading isLoading={appState.loading} posts={appState.posts} />
 		</div>
 	);
 }
-export default App;

@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-const baseURL = process.env.REACT_APP_API_ENDPOINT;
+const baseURL =
+	'https://zz-cors.herokuapp.com/https://cryptic-headland-38418.herokuapp.com/api/';
 
-const AxiosRequest = axios.create({
+const axiosInstance = axios.create({
 	baseURL: baseURL,
 	timeout: 5000,
 	headers: {
@@ -14,7 +15,7 @@ const AxiosRequest = axios.create({
 	},
 });
 
-AxiosRequest.interceptors.response.use(
+axiosInstance.interceptors.response.use(
 	(response) => {
 		return response;
 	},
@@ -25,7 +26,7 @@ AxiosRequest.interceptors.response.use(
 			alert(
 				'A server/network error occurred. ' +
 					'Looks like CORS might be the problem. ' +
-					'Sorry about this - we will get it fixed shortly.',
+					'Sorry about this - we will get it fixed shortly.'
 			);
 			return Promise.reject(error);
 		}
@@ -53,34 +54,24 @@ AxiosRequest.interceptors.response.use(
 				console.log(tokenParts.exp);
 
 				if (tokenParts.exp > now) {
-					return AxiosRequest
+					return axiosInstance
 						.post('/token/refresh/', { refresh: refreshToken })
 						.then((response) => {
-							localStorage.setItem(
-								'access_token',
-								response.data.access,
-							);
-							localStorage.setItem(
-								'refresh_token',
-								response.data.refresh,
-							);
+							localStorage.setItem('access_token', response.data.access);
+							localStorage.setItem('refresh_token', response.data.refresh);
 
-							AxiosRequest.defaults.headers['Authorization'] =
+							axiosInstance.defaults.headers['Authorization'] =
 								'JWT ' + response.data.access;
 							originalRequest.headers['Authorization'] =
 								'JWT ' + response.data.access;
 
-							return AxiosRequest(originalRequest);
+							return axiosInstance(originalRequest);
 						})
 						.catch((err) => {
 							console.log(err);
 						});
 				} else {
-					console.log(
-						'Refresh token is expired',
-						tokenParts.exp,
-						now,
-					);
+					console.log('Refresh token is expired', tokenParts.exp, now);
 					window.location.href = '/login/';
 				}
 			} else {
@@ -91,7 +82,7 @@ AxiosRequest.interceptors.response.use(
 
 		// specific error handling done elsewhere
 		return Promise.reject(error);
-	},
+	}
 );
 
-export default AxiosRequest;
+export default axiosInstance;
