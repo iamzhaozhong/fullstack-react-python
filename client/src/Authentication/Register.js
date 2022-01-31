@@ -3,6 +3,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import axiosInstance from '../Services/AxiosConfig';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import BackButton from '../Components/BackButton';
 
 const RegistrationDiv = styled(motion.div)`
 	display: flex;
@@ -271,80 +272,83 @@ export default function Register() {
 	};
 
 	return (
-		<RegistrationDiv
-			initial={{ height: 0 }}
-			animate={{ height: '80vh' }}
-			transition={{ type: 'spring', duration: 2, delay: 1 }}>
-			<RegistrationBox>
-				<h1>Sign Up</h1>
-				<h2>Please create your new account</h2>
-				<form className='form'>
-					<fieldset class='form-fieldset ui-input __first'>
-						<input
-							variant='outlined'
-							fullWidth
-							id='email'
-							label='Email Address'
-							name='email'
-							autoComplete='email'
-							onChange={handleChange}
-						/>
-						<label for='Email Address'>
-							<span data-text='Email Address'>Email Address</span>
-						</label>
-					</fieldset>
+		<>
+			<BackButton />
+			<RegistrationDiv
+				initial={{ height: 0 }}
+				animate={{ height: 'auto' }}
+				transition={{ type: 'spring', duration: 2, delay: 1 }}>
+				<RegistrationBox>
+					<h1>Sign Up</h1>
+					<h2>Please create your new account</h2>
+					<form className='form'>
+						<fieldset class='form-fieldset ui-input __first'>
+							<input
+								variant='outlined'
+								fullWidth
+								id='email'
+								label='Email Address'
+								name='email'
+								autoComplete='email'
+								onChange={handleChange}
+							/>
+							<label for='Email Address'>
+								<span data-text='Email Address'>Email Address</span>
+							</label>
+						</fieldset>
 
-					<fieldset class='form-fieldset ui-input __second'>
-						<input
-							variant='outlined'
-							margin='normal'
-							fullWidth
-							id='username'
-							label='Username'
-							name='username'
-							onChange={handleChange}
-						/>
-						<label for='Username'>
-							<span data-text='Username'>Username</span>
-						</label>
-					</fieldset>
+						<fieldset class='form-fieldset ui-input __second'>
+							<input
+								variant='outlined'
+								margin='normal'
+								fullWidth
+								id='username'
+								label='Username'
+								name='username'
+								onChange={handleChange}
+							/>
+							<label for='Username'>
+								<span data-text='Username'>Username</span>
+							</label>
+						</fieldset>
 
-					<fieldset class='form-fieldset ui-input __third'>
-						<input
-							type='password'
-							variant='outlined'
-							fullWidth
-							name='password'
-							label='Password'
-							id='password'
-							onChange={handleChange}
-						/>
-						<label for='Password'>
-							<span data-text='New Password'>New Password</span>
-						</label>
-					</fieldset>
+						<fieldset class='form-fieldset ui-input __third'>
+							<input
+								type='password'
+								variant='outlined'
+								fullWidth
+								name='password'
+								label='Password'
+								id='password'
+								onChange={handleChange}
+							/>
+							<label for='Password'>
+								<span data-text='New Password'>New Password</span>
+							</label>
+						</fieldset>
 
-					<fieldset class='form-fieldset ui-input __fourth'>
-						<input type='password' id='repeat-new-password' />
-						<label for='repeat-new-password'>
-							<span data-text='Repeat New Password'>Repeat New Password</span>
-						</label>
-					</fieldset>
+						<fieldset class='form-fieldset ui-input __fourth'>
+							<input type='password' id='repeat-new-password' />
+							<label for='repeat-new-password'>
+								<span data-text='Repeat New Password'>Repeat New Password</span>
+							</label>
+						</fieldset>
 
-					<div class='form-footer'>
-						<button class='btn' type='submit' onClick={handleSubmit}>
-							Create Account
-						</button>
-					</div>
-					<div class='form-footer'>
-						<NavLink to='/login'>
-							<button class='btn' to='/login'>
-								Login
+						<div class='form-footer'>
+							<button class='btn' type='submit' onClick={handleSubmit}>
+								Create Account
 							</button>
-						</NavLink>
-					</div>
-				</form>
-			</RegistrationBox>
-		</RegistrationDiv>
+						</div>
+						<div class='form-footer'>
+							<NavLink to='/login'>
+								<button class='btn' to='/login'>
+									Login
+								</button>
+							</NavLink>
+						</div>
+					</form>
+				</RegistrationBox>
+			</RegistrationDiv>
+		</>
 	);
 }

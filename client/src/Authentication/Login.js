@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import axiosInstance from '../Services/AxiosConfig';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import BackButton from '../Components/BackButton';
 
 const LoginDiv = styled(motion.div)`
 	display: flex;
@@ -273,61 +274,64 @@ export default function Login() {
 	};
 
 	return (
-		<LoginDiv
-			initial={{ height: 0 }}
-			animate={{ height: '60vh' }}
-			transition={{ type: 'spring', duration: 2, delay: 1 }}>
-			<>
-				<LoginBox>
-					<h1>Sign In</h1>
-					<form className='form'>
-						<fieldset class='form-fieldset ui-input __first'>
-							<input
-								variant='outlined'
-								margin='normal'
-								fullWidth
-								id='email'
-								label='Email Address'
-								name='email'
-								autoComplete='email'
-								autoFocus
-								onChange={handleChange}
-							/>
-							<label for='email'>
-								<span data-text='Email Address'>Email Address</span>
-							</label>
-						</fieldset>
-						<fieldset class='form-fieldset ui-input __Ssecond'>
-							<input
-								variant='outlined'
-								margin='normal'
-								fullWidth
-								name='password'
-								label='Password'
-								type='password'
-								id='password'
-								autoComplete='current-password'
-								onChange={handleChange}
-							/>
-							<label for='password'>
-								<span data-text='Password'>Password</span>
-							</label>
-						</fieldset>
-					</form>
+		<>
+			<BackButton />
+			<LoginDiv
+				initial={{ height: 0 }}
+				animate={{ height: 'auto' }}
+				transition={{ type: 'spring', duration: 2, delay: 1 }}>
+				<>
+					<LoginBox>
+						<h1>Sign In</h1>
+						<form className='form'>
+							<fieldset class='form-fieldset ui-input __first'>
+								<input
+									variant='outlined'
+									margin='normal'
+									fullWidth
+									id='email'
+									label='Email Address'
+									name='email'
+									autoComplete='email'
+									autoFocus
+									onChange={handleChange}
+								/>
+								<label for='email'>
+									<span data-text='Email Address'>Email Address</span>
+								</label>
+							</fieldset>
+							<fieldset class='form-fieldset ui-input __Ssecond'>
+								<input
+									variant='outlined'
+									margin='normal'
+									fullWidth
+									name='password'
+									label='Password'
+									type='password'
+									id='password'
+									autoComplete='current-password'
+									onChange={handleChange}
+								/>
+								<label for='password'>
+									<span data-text='Password'>Password</span>
+								</label>
+							</fieldset>
+						</form>
 
-					<div className='form-footer'>
-						<button class='btn' onClick={handleSubmit}>
-							Login
-						</button>
-					</div>
-					<div id='button2'>
-						<h3>New Here? Please sign me up! </h3>
-						<NavLink to='/register'>
-							<button class='btn'>Sign Up</button>
-						</NavLink>
-					</div>
-				</LoginBox>
-			</>
-		</LoginDiv>
+						<div className='form-footer'>
+							<button class='btn' onClick={handleSubmit}>
+								Login
+							</button>
+						</div>
+						<div id='button2'>
+							<h3>New Here? Please sign me up! </h3>
+							<NavLink to='/register'>
+								<button class='btn'>Sign Up</button>
+							</NavLink>
+						</div>
+					</LoginBox>
+				</>
+			</LoginDiv>
+		</>
 	);
 }

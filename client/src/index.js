@@ -23,9 +23,9 @@ ReactDOM.render(
 					<Route exact path='/about' element={<About />} />
 					<Route exact path='/admin/create' element={<Create />} />
 					<Route exact path='/post/:slug' element={<PostDetail />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/register' element={<Register />} />
-					<Route path='/logout' element={<Logout />} />
+					<Route exact path='/login' element={<Login />} />
+					<Route exact path='/register' element={<Register />} />
+					<Route exact path='/logout' element={<Logout />} />
 				</Routes>
 			</AnimatePresence>
 		</BrowserRouter>
