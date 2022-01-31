@@ -36,8 +36,9 @@ export default function LeftSide(props) {
 				transition={{ type: 'spring', duration: 1, delay: 1.2 }}>
 				<NavLink
 					style={{ color: 'inherit' }}
+					to={ { pathname: 'https://linkedin.com/junzhaozhongliu' } }
 					target='_blank'
-					to={{ pathname: 'https://twitter.com/code_bucks' }}>
+					>
 					<Twitter
 						width={25}
 						height={25}
